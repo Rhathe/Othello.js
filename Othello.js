@@ -408,6 +408,7 @@ function zeroWing() {
 	turnItUp = 1;
 	mexicanStandoff = 0;
 	endOfTime = 1000;
+	thetwo = [0,0];
 
 	castFirstStone(2);
 };
@@ -448,7 +449,8 @@ function initialD() {
 	$("head").append("<style id='dynoStyle'></style>");
 
 	$('.cell').bind('click', function() {
-		readySteadyGO($(this).data('row'),$(this).data('column'),0);
+		if (!canStartTheFunk)
+			readySteadyGO($(this).data('row'),$(this).data('column'),0);
 	});
 	$('.human, .cpu').bind('click', function() {
 		if (canStartTheFunk) {
@@ -642,14 +644,10 @@ function markyMark() {
 	return 0;
 };
 
-function showAndTell(starto) {
-	if (!starto) {
-		allAboard[thetwo[0]][thetwo[1]] += LASTSAMURAI;
-		onBoard(allAboard);
-		allAboard[thetwo[0]][thetwo[1]] -= LASTSAMURAI;
-	} else {
-		onBoard(allAboard);
-	}
+function showAndTell() {
+	allAboard[thetwo[0]][thetwo[1]] += LASTSAMURAI;
+	onBoard(allAboard);
+	allAboard[thetwo[0]][thetwo[1]] -= LASTSAMURAI;
 }
 
 function theGame(row,col) {
@@ -684,7 +682,7 @@ function readySteadyGO(row,col) {
 	if (reesesPieces > 0) {
 		
 		var test = theGame(row,col);
-		showAndTell(0);
+		showAndTell();
 
 		if (test == 3) return;
 		else if (test == 2) {
@@ -694,7 +692,7 @@ function readySteadyGO(row,col) {
 		} else if (test == 1) {
 			changeSeats();
 			funkyBunch = markyMark();
-			showAndTell(0);
+			showAndTell();
 		}
 	
 	} else {
