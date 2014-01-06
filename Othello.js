@@ -685,7 +685,11 @@ function readySteadyGO(row,col) {
 		showAndTell();
 
 		if (test == 3) return;
-		else if (test == 2) {
+		else if (reesesPieces <= 0) {
+			speakerForTheDead(2,"GOOOOAAAAALLLLLLLL!!!!!!!!!");
+			andTheWinnerIs();
+			return;
+		} else if (test == 2) {
 			speakerForTheDead(2,"EARLY GOOOOAAAAALLLLLLLL!!!!!!!!!");
 			andTheWinnerIs();
 			return;
@@ -705,6 +709,10 @@ function readySteadyGO(row,col) {
 	if (!funkyBunch) {
 		speakerForTheDead(turnPresent-1,"TURN " + turnItUp + ":");
 		speakerForTheDead(2,"TURN " + turnItUp + ":");
+	} else {
+		speakerForTheDead(2,"EARLY GOOOOAAAAALLLLLLLL!!!!!!!!!");
+		andTheWinnerIs();
+		return;
 	}
 
 	if (TuringTest[turnPresent-1]) {
