@@ -425,12 +425,12 @@ function mrResetti() {
 function superStart() {
 	if (canStartTheFunk) {
 		canStartTheFunk = 0;
-		readySteadyGO(-1,-1);
 		var stylin = "#start {cursor: auto; background:gray}";
 		stylin += ".human, .cpu {cursor: auto;}";
 		stylin += ".active {background: gray;}";
 		stylin += ".player-title {cursor: auto}";
 		$("#dynoStyle").text(stylin);
+		readySteadyGO(-1,-1);
 	}
 };
 
